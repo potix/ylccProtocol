@@ -1,0 +1,6 @@
+[submodule "ylcc"]
+	path = ylcc
+	url = https://github.com/potix/ylcc
+[submodule "ylccProtocol/ylcc"]
+	path = ylccProtocol/ylcc
+	url = https://github.com/potix/ylcc
