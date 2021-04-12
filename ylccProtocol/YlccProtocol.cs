@@ -70,7 +70,7 @@ namespace ylccProtocol
 				VideoId = videoId,
 			};
 		}
-		public GetWordCloudRequest BuildGetWordCloudRequest(string videoId, Target target, int width, int height, int fontMaxSize, int fontMinSize, List<Color> colors, Color backgroudColor)
+		public GetWordCloudRequest BuildGetWordCloudRequest(string videoId, Target target, int width, int height, int fontMaxSize, int fontMinSize, ICollection<Color> colors, Color backgroudColor)
 		{
 			GetWordCloudRequest request = new GetWordCloudRequest
 			{
