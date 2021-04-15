@@ -70,12 +70,14 @@ namespace ylccProtocol
 				VideoId = videoId,
 			};
 		}
-		public GetWordCloudRequest BuildGetWordCloudRequest(string videoId, Target target, int width, int height, int fontMaxSize, int fontMinSize, ICollection<Color> colors, Color backgroudColor)
+
+		public GetWordCloudRequest BuildGetWordCloudRequest(string videoId, Target target, int messageLimit, int width, int height, int fontMaxSize, int fontMinSize, ICollection<Color> colors, Color backgroudColor)
 		{
 			GetWordCloudRequest request = new GetWordCloudRequest
 			{
 				VideoId = videoId,
 				Target = target,
+				MessageLimit = messageLimit,
 				Width = width,
 				Height = height,
 				FontMaxSize = fontMaxSize,
@@ -87,5 +89,49 @@ namespace ylccProtocol
 			}
 			return request;
 		}
+
+		public OpenVoteRequest BuildOpenVoteRequest(string videoId, Target target, int duration,  ICollection<VoteChoice> choices)
+		{
+			OpenVoteRequest request = new OpenVoteRequest
+			{
+				VideoId = videoId,
+				Target = target,
+				Duration = duration,
+			};
+			foreach (VoteChoice choice in choices)
+			{
+				request.Choices.Add(choice);
+			}
+			return request;
+		}
+
+		public UpdateVoteDurationRequest BuildUpdateVoteDurationRequest(string voteId, int duration)
+		{
+			UpdateVoteDurationRequest request = new UpdateVoteDurationRequest
+			{
+				VoteId = voteId,
+				Duration = duration,
+			};
+			return request;
+		}
+
+		public GetVoteResultRequest BuildGetVoteResultRequest(string voteId)
+		{
+			GetVoteResultRequest request = new GetVoteResultRequest
+			{
+				VoteId = voteId,
+			};
+			return request;
+		}
+
+		public CloseVoteRequest BuildCloseVoteRequestRequest(string voteId)
+		{
+			CloseVoteRequest request = new CloseVoteRequest
+			{
+				VoteId = voteId,
+			};
+			return request;
+		}
+
 	}
 }
