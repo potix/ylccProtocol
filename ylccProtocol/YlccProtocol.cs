@@ -124,7 +124,7 @@ namespace ylccProtocol
 			return request;
 		}
 
-		public CloseVoteRequest BuildCloseVoteRequestRequest(string voteId)
+		public CloseVoteRequest BuildCloseVoteRequest(string voteId)
 		{
 			CloseVoteRequest request = new CloseVoteRequest
 			{
