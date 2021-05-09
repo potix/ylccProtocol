@@ -71,13 +71,13 @@ namespace ylccProtocol
 			};
 		}
 
-		public Color BuildCorlor(string color)
+		public Color BuildColor(string color)
         {
 			System.Drawing.Color dColor = System.Drawing.ColorTranslator.FromHtml(color);
 			return new Color() { R = dColor.R, G = dColor.G, B = dColor.B, A = dColor.A };
 		}
 
-		public Color BuildCorlor(UInt32 r, UInt32 g, UInt32 b, UInt32 a)
+		public Color BuildColor(UInt32 r, UInt32 g, UInt32 b, UInt32 a)
 		{
 			return new Color() { R = r, G = g, B = b, A = a };
 		}
