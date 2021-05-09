@@ -71,6 +71,17 @@ namespace ylccProtocol
 			};
 		}
 
+		public Color BuildCorlor(string color)
+        {
+			System.Drawing.Color dColor = System.Drawing.ColorTranslator.FromHtml(color);
+			return new Color() { R = dColor.R, G = dColor.G, B = dColor.B, A = dColor.A };
+		}
+
+		public Color BuildCorlor(UInt32 r, UInt32 g, UInt32 b, UInt32 a)
+		{
+			return new Color() { R = r, G = g, B = b, A = a };
+		}
+
 		public GetWordCloudRequest BuildGetWordCloudRequest(string videoId, Target target, int messageLimit, int width, int height, int fontMaxSize, int fontMinSize, ICollection<Color> colors, Color backgroudColor)
 		{
 			GetWordCloudRequest request = new GetWordCloudRequest
@@ -88,6 +99,11 @@ namespace ylccProtocol
 				request.Colors.Add(color);
 			}
 			return request;
+		}
+
+		public VoteChoice BuildVoteCoice(string label, string choice)
+        {
+			return new VoteChoice() { Label = label, Choice = choice };
 		}
 
 		public OpenVoteRequest BuildOpenVoteRequest(string videoId, Target target, int duration,  ICollection<VoteChoice> choices)
@@ -132,6 +148,34 @@ namespace ylccProtocol
 			};
 			return request;
 		}
+
+		public GroupingChoice BuildGroupingCoice(string label, string choice)
+		{
+			return new GroupingChoice() { Label = label, Choice = choice };
+		}
+
+		public StartGroupingActiveLiveChatRequest BuildStartGroupingActiveLiveChatRequest(string videoId, Target target, ICollection<GroupingChoice> choices)
+        {
+			StartGroupingActiveLiveChatRequest request = new StartGroupingActiveLiveChatRequest
+			{
+				VideoId = videoId,
+				Target = target,				
+			};
+			foreach (GroupingChoice choice in choices)
+			{
+				request.Choices.Add(choice);
+			}
+			return request;
+		}
+
+		public PollGroupingActiveLiveChatRequest BuildPollGroupingActiveLiveChatRequest(string groupingId)
+		{
+			return new PollGroupingActiveLiveChatRequest
+			{
+				GroupingId = groupingId,
+			};
+		}
+
 
 	}
 }
